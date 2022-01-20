@@ -5,5 +5,9 @@
 
 class ReturnOptimizer {
    public:
-      virtual position FindBestPositionForReturn(position opponentPosition, position myPosition) = 0;
+       position FindBestPositionForReturn(position opponentPosition, position myPosition){
+         // defaulting the implementation to be bad implementation where we
+         // return to where the opponent player is.
+         return opponentPosition;
+       };
 };
