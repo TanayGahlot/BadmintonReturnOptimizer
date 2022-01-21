@@ -1,8 +1,10 @@
 #include "optimizer.h"
 
-class BadReturnOptimizer: public ReturnOptimizer {
-   public:
-      position FindBestPositionForReturn(position opponentPosition, position myPosition) {
-         return opponentPosition;
-      }
+class BadReturnOptimizer : public ReturnOptimizer
+{
+public:
+   position FindBestPositionForReturn(position opponentPosition, position myPosition)
+   {
+      return opponentPosition;
+   }
 };
