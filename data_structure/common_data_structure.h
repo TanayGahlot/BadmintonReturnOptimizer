@@ -1,4 +1,5 @@
-struct position {
+struct position
+{
   double x;
   double y;
-} ;
+};

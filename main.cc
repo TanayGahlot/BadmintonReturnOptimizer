@@ -1,5 +1,5 @@
 #include <iostream>
-#include "optimizer/bad_optimizer.cc"
+#include "optimizer/optimizer.h"
 
 using namespace std;
 

@@ -1,10 +1,6 @@
 #include "optimizer.h"
 
-class BadReturnOptimizer : public ReturnOptimizer
+position BadReturnOptimizer::FindBestPositionForReturn(position opponentPosition, position myPosition)
 {
-public:
-   position FindBestPositionForReturn(position opponentPosition, position myPosition)
-   {
-      return opponentPosition;
-   }
-};
+    return opponentPosition;
+}
