@@ -20,19 +20,24 @@ void DisplayPosition(position pos)
 
 void DisplayCLIUsageAndDie()
 {
-  std::cerr << "Incorrect usage, use it as follows:\n ./a.out <optimizer>\n"
-            << "for ex: to use bad optimizer:\n ./a.out bad_optimizer \n\n"
+  std::cerr << "Incorrect usage, use it as follows:\n ./ReturnOptimizer <optimizer>\n"
+            << "for ex: to use bad optimizer:\n ./ReturnOptimizer bad_optimizer \n\n"
             << "The following optimizers are available as of now:\n"
             << "1. bad_optimizer: returns to the opponent position \n"
+            << "2. distance_based_optimizer: returns to position furthest away from opponent. \n"
             << '\n';
   exit(-1);
 }
 
-ReturnOptimizer GetCorrectReturnOptimizerImplementation(char *optimizerName)
+ReturnOptimizer *GetCorrectReturnOptimizerImplementation(char *optimizerName)
 {
   if (std::strcmp(optimizerName, "bad_optimizer") == 0)
   {
-    return BadReturnOptimizer();
+    return new BadReturnOptimizer;
+  }
+  else if (std::strcmp(optimizerName, "distance_based_optimizer") == 0)
+  {
+    return new DistanceBasedReturnOptimizer;
   }
   else
   {
@@ -43,7 +48,7 @@ ReturnOptimizer GetCorrectReturnOptimizerImplementation(char *optimizerName)
 
 int main(int argc, char **argv)
 {
-  ReturnOptimizer optimizer;
+  ReturnOptimizer *optimizer = new ReturnOptimizer;
   if (argc != 2)
   {
     DisplayCLIUsageAndDie();
@@ -59,7 +64,7 @@ int main(int argc, char **argv)
   std::cout << "Enter your opponent position:\n";
   position opponentPosition = AskForPosition();
 
-  position optimalPosition = optimizer.FindBestPositionForReturn(opponentPosition, myPosition);
+  position optimalPosition = optimizer->FindBestPositionForReturn(opponentPosition, myPosition);
   DisplayPosition(optimalPosition);
   return 0;
 }

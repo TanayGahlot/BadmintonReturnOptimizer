@@ -6,7 +6,7 @@
 class ReturnOptimizer
 {
 public:
-  position FindBestPositionForReturn(position opponentPosition, position myPosition)
+  virtual position FindBestPositionForReturn(position opponentPosition, position myPosition)
   {
     // defaulting the implementation to be bad implementation where we
     // return to where the opponent player is.
@@ -17,5 +17,14 @@ public:
 class BadReturnOptimizer : public ReturnOptimizer
 {
 public:
-  position FindBestPositionForReturn(position opponentPosition, position myPosition);
+  position FindBestPositionForReturn(position opponentPosition, position myPosition) override;
+};
+
+class DistanceBasedReturnOptimizer : public ReturnOptimizer
+{
+public:
+  position FindBestPositionForReturn(position opponentPosition, position myPosition) override;
+
+private:
+  double FindDistance(position pos1, position pos2);
 };
