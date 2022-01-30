@@ -27,6 +27,6 @@ Find the position where return needs to be placed. It's highlighted in green in 
 
 ## Grid based setup
 
-Given that the court is not big, we can divide the court into 100*100 grid and evaluate the optimization function at each point. This way we will meet the constraint of return being in the court and come up with the grid coordinate where we maximize our objective function in O(1)~O(100*100) time.
+Given that the court is not big, we can divide the court into 100\*100 grid and evaluate the optimization function at each point. This way we will meet the constraint of return being in the court and come up with the grid coordinate where we maximize our objective function in O(1)~O(100\*100) time.
 
 
